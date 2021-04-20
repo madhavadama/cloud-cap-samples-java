@@ -21,7 +21,7 @@ import com.sap.cds.ql.cqn.CqnAnalyzer;
 import com.sap.cds.reflect.CdsModel;
 import com.sap.cds.services.ErrorStatuses;
 import com.sap.cds.services.ServiceException;
-import com.sap.cds.services.cds.CdsService;
+import com.sap.cds.services.cds.CqnService;
 import com.sap.cds.services.draft.DraftCancelEventContext;
 import com.sap.cds.services.draft.DraftPatchEventContext;
 import com.sap.cds.services.draft.DraftService;
@@ -75,7 +75,7 @@ class AdminServiceHandler implements EventHandler {
 	 *
 	 * @param orders
 	 */
-	@Before(event = { CdsService.EVENT_CREATE, CdsService.EVENT_UPSERT, CdsService.EVENT_UPDATE })
+	@Before(event = { CqnService.EVENT_CREATE, CqnService.EVENT_UPSERT, CqnService.EVENT_UPDATE })
 	public void beforeCreateOrder(Stream<Orders> orders) {
 		orders.forEach(order -> {
 			// reset total
@@ -134,7 +134,7 @@ class AdminServiceHandler implements EventHandler {
 		// check if amount or book was updated
 		Integer amount = orderItem.getAmount();
 		String bookId = orderItem.getBookId();
-		String orderItemId = (String) analyzer.analyze(context.getCqn()).targetKeys().get(OrderItems.ID);
+		String orderItemId = orderItem.getId();
 		BigDecimal netAmount = calculateNetAmountInDraft(orderItemId, amount, bookId);
 		if (netAmount != null) {
 			orderItem.setNetAmount(netAmount);

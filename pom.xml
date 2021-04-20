@@ -16,10 +16,9 @@
 
 		<!-- DEPENDENCIES VERSION -->
 		<jdk.version>1.8</jdk.version>
-		<cds.services.version>1.13.0</cds.services.version>
-		<spring.boot.version>2.4.1</spring.boot.version>
-
-		<node.version>v12.16.2</node.version>
+		<cds.services.version>1.15.2</cds.services.version>
+		<spring.boot.version>2.4.4</spring.boot.version>
+		<cloud.sdk.version>3.41.0</cloud.sdk.version>
 	</properties>
 
 	<modules>
@@ -45,6 +44,15 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- CLOUD SDK -->
+			<dependency>
+				<groupId>com.sap.cloud.sdk</groupId>
+				<artifactId>sdk-bom</artifactId>
+				<version>${cloud.sdk.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -67,7 +75,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring.boot.version}</version>
 				<configuration>
-					<fork>false</fork>
 					<skip>true</skip>
 				</configuration>
 			</plugin>
