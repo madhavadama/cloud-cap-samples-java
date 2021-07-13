@@ -142,6 +142,22 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+        <groupId>com.sap.cds</groupId>
+        <artifactId>cds-maven-plugin</artifactId>
+        <version>1.16.0</version>
+      </plugin>
 		</plugins>
+    <!-- To define the plugin version in your parent POM -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.sap.cds</groupId>
+          <artifactId>cds-maven-plugin</artifactId>
+          <version>1.16.0</version>
+        </plugin>
+        ...
+      </plugins>
+    </pluginManagement>
 	</build>
 </project>
