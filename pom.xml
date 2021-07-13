@@ -156,7 +156,6 @@
           <artifactId>cds-maven-plugin</artifactId>
           <version>1.16.0</version>
         </plugin>
-        ...
       </plugins>
     </pluginManagement>
 	</build>
